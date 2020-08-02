@@ -20,3 +20,6 @@ Route::group(['middleware' => ['api']], function () {
 */
 Route::apiResource('/user', 'UserController', ['except' => ['create', 'edit']]);
 Route::apiResource('/match', 'MatchController', ['except' => ['create', 'edit']]);
+Route::apiResource('/user', 'PlaceController', ['except' => ['create', 'edit']]);
+Route::apiResource('/match', 'PracticeController', ['except' => ['create', 'edit']]);
+Route::apiResource('/user', 'ResultController', ['except' => ['create', 'edit']]);
