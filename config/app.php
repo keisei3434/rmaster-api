@@ -228,5 +228,5 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
     ],
-
+    'log_level' => env('APP_LOG_LEVEL', 'error'),
 ];
