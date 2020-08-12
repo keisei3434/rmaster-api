@@ -70,6 +70,9 @@ class PracticeController extends Controller
     public function update(Request $request, $id)
     {
         $practice = Practice::find($id);
+        if ($request->has('is_active')) {
+          $practice->where('is_active', 1)->update(['is_active' => 0]);
+        }
         $practice->update($request->all());
         return response()->json($practice);
     }
