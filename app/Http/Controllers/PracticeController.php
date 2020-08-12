@@ -15,7 +15,7 @@ class PracticeController extends Controller
      */
     public function index()
     {
-        return response()->json(Practice::all());
+        return response()->json(Practice::all()->orderBy('end_at', 'desc'));
     }
 
     /**
