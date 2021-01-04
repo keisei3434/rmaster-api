@@ -20,6 +20,9 @@ Route::group(['middleware' => ['api']], function () {
 */
 Route::apiResource('/user', 'UserController', ['except' => ['create', 'edit']]);
 Route::apiResource('/match', 'MatchController', ['except' => ['create', 'edit']]);
+Route::get('/active_practice', 'PracticeController@getActivePractice');
 Route::apiResource('/place', 'PlaceController', ['except' => ['create', 'edit']]);
 Route::apiResource('/practice', 'PracticeController', ['except' => ['create', 'edit']]);
 Route::apiResource('/result', 'ResultController', ['except' => ['create', 'edit']]);
+Route::patch('/match_result', 'ResultController@patchMatchResult');
+Route::get('/ranking', 'RankingController@getRankingSummary');

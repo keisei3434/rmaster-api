@@ -10,6 +10,8 @@ class Practice extends Model
     
     public function matches()
     {
-        return $this->hasMany('App\Match');
+        return $this->hasManyThrough(
+        'App\Result',
+        'App\Match');
     }
 }

@@ -74,6 +74,16 @@ class ResultController extends Controller
         return response()->json($result);
     }
 
+    public function patchMatchResult(Request $request)
+    {
+        $i = 0;
+        foreach ($request->all() as $update_result) {
+            $result = Result::where('match_id', $update_result['match_id'])->where('pair', $update_result['pair'])->where('court', $update_result['court'])->first();
+            $result->update(['user1' => $update_result['user1'], 'user2' => $update_result['user2'], 'point' => $update_result['point']]);
+        }
+        return response()->json([]);
+    }
+
     /**
      * Remove the specified resource from storage.
      *

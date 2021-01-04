@@ -1,14 +1,11 @@
 <?php
 
-require 'vendor/autoload.php';
 
 namespace App\Http\Controllers;
 
 use App\Practice;
 
 use Illuminate\Http\Request;
-
-use Carbon\Carbon;
 
 class PracticeController extends Controller
 {
@@ -50,14 +47,15 @@ class PracticeController extends Controller
      */
     public function show($id)
     {
-        $time = new Carbon(Carbon::now());
-        return response()->json(Practice::with('matches')->where('start_at', $time)->get());   
-        //return response()->json(Practice::with('matches')->find($id));
+        return response()->json(Practice::with('matches')->find($id));
     }
 
     public function getActivePractice()
     {
-        //return response()->json(Practice::with('matches')->find($id));
+        date_default_timezone_set('Asia/Tokyo');
+        $fromTime = date("Y-m-d H:i:s", strtotime('+30 min'));
+        $toTime = date("Y-m-d H:i:s", strtotime('-30 min'));
+        return response()->json(Practice::with('matches')->where('start_at', '<', $fromTime)->where('end_at', '>', $toTime)->first());  
     }
 
     /**
